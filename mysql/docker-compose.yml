@@ -8,6 +8,8 @@ services:
       - "3306:3306"
     volumes:
       - ./data:/var/lib/mysql
+    secrets:
+      - mysql_root_password_file
 
 secrets:
   mysql_root_password_file:

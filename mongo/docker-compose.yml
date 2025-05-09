@@ -10,6 +10,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongo_initdb_root_password_file
     volumes:
       - ./data/:/data/db/
+    secrets:
+      - mongo_initdb_root_password_file
 
 secrets:
   mongo_initdb_root_password_file:
