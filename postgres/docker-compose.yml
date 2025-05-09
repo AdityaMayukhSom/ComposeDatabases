@@ -1,0 +1,14 @@
+services:
+  postgres17:
+    image: postgres:17
+    restart: always
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password_file
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      
+secrets:
+  postgres_password_file:
+    file: ./secrets/postgres_password_file

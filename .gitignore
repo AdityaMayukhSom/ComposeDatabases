@@ -2,3 +2,7 @@
 /mongodb/db_data
 /mysql/mysql
 /postgresql/data
+**/*secret*
+**/*passwd*
+**/.env*
+**/secrets/*

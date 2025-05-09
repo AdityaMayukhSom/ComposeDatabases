@@ -1,7 +1,3 @@
-# docker compose file for redis and redis-insight with port mapping
-
-version: '3.7'
-
 services:
   redis:
     image: redis:latest
