@@ -3,12 +3,12 @@ services:
     image: mysql:9
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD_FILE: /run/secters/mysql_root_password_file
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password_file
     ports:
       - "3306:3306"
     volumes:
       - ./data:/var/lib/mysql
 
 secrets:
-  mysel_root_password_file:
+  mysql_root_password_file:
     file: ./secrets/mysql_root_password

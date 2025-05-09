@@ -4,7 +4,7 @@ services:
     restart: always
     container_name: mongo
     ports:
-      - 27017:27017 # make sure we don't have another mongo container running on same port
+      - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongo_initdb_root_password_file
