@@ -11,4 +11,4 @@ services:
 
 secrets:
   mysel_root_password_file:
-    file: ./secrets/mysql_root_password_file
+    file: ./secrets/mysql_root_password

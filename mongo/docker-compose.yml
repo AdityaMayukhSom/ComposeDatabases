@@ -13,4 +13,4 @@ services:
 
 secrets:
   mongo_initdb_root_password_file:
-    file: ./secrets/mongo_initdb_root_password_file
+    file: ./secrets/mongo_initdb_root_password

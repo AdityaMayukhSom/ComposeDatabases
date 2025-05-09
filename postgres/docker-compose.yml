@@ -11,4 +11,4 @@ services:
       
 secrets:
   postgres_password_file:
-    file: ./secrets/postgres_password_file
+    file: ./secrets/postgres_password
