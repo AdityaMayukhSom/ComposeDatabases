@@ -1,0 +1,72 @@
+# https://medium.com/@JosephOjo/mongodb-replica-set-with-docker-compose-5ab95c02af0d
+
+services:
+  mongo_node_01:
+    image: mongo:8-noble
+    container_name: mongo_node_01
+    restart: always
+    command: [ "--replSet", "rs0", "--bind_ip_all", "--keyFile", "/etc/mongodb/pki/keyfile" ]
+    ports:
+      - "27017:27017"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongo_initdb_root_password_file
+    volumes:
+      - ${PWD}/rs_keyfile:/etc/mongodb/pki/keyfile
+      - ${PWD}/node_01_data/:/data/db/
+      - ${PWD}/node_01_config/:/data/configdb
+    secrets:
+      - mongo_initdb_root_password_file
+    networks:
+      - mongo_cluster
+
+  mongo_node_02:
+    image: mongo:8-noble
+    restart: always
+    container_name: mongo_node_02
+    command: [ "--replSet", "rs0", "--bind_ip_all", "--keyFile", "/etc/mongodb/pki/keyfile" ]
+    ports:
+      - "27018:27017"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongo_initdb_root_password_file
+    volumes:
+      - ${PWD}/rs_keyfile:/etc/mongodb/pki/keyfile
+      - ${PWD}/node_02_data/:/data/db/
+      - ${PWD}/node_02_config/:/data/configdb
+    secrets:
+      - mongo_initdb_root_password_file
+    networks:
+      - mongo_cluster
+
+  mongo_node_03:
+    image: mongo:8-noble
+    restart: always
+    container_name: mongo_node_03
+    command: [ "--replSet", "rs0", "--bind_ip_all", "--keyFile", "/etc/mongodb/pki/keyfile" ]
+    ports:
+      - "27019:27017"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongo_initdb_root_password_file
+    volumes:
+      - ${PWD}/rs_keyfile:/etc/mongodb/pki/keyfile
+      - ${PWD}/node_03_data/:/data/db/
+      - ${PWD}/node_03_config/:/data/configdb
+    secrets:
+      - mongo_initdb_root_password_file
+    networks:
+      - mongo_cluster
+secrets:
+  mongo_initdb_root_password_file:
+    file: ./secrets/mongo_initdb_root_password
+
+networks:
+  mongo_cluster:
+    driver: bridge

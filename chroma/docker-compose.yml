@@ -1,0 +1,8 @@
+services:
+  chroma:
+    image: ghcr.io/chroma-core/chroma:latest
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data/:/chroma/.chroma/index
