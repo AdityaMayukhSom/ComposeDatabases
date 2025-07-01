@@ -1,8 +1,11 @@
 # mongo db named volumes and paths on the host mapped to paths in the container
-/mongodb/db_data
-/mysql/mysql
-/postgresql/data
+mongo/node_*_data
+mongo/node_*_config
+mysql/data
+postgresql/data
 **/*secret*
 **/*passwd*
 **/.env*
 **/secrets/*
+**/data
+**/rs_keyfile
