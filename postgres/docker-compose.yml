@@ -10,7 +10,7 @@ services:
       - ./data:/var/lib/postgresql/data
     secrets:
       - postgres_password_file
-      
+
 secrets:
   postgres_password_file:
     file: ./secrets/postgres_password
